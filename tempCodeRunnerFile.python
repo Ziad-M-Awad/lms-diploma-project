@@ -1,0 +1,30 @@
+import tkinter as tk
+
+def count_palindromes(sentence):
+    words = sentence.split()
+    palindrome_count = sum(word == word[::-1] for word in words)
+    return palindrome_count
+
+def update_palindrome_count():
+    input_text = entry.get()
+    count = count_palindromes(input_text)
+    result_label.config(text=f"Palindrome Words Count: {count}")
+
+app = tk.Tk()
+app.title("Palindrome Word Counter")
+
+# Student Information
+info_label = tk.Label(app, text="Student: [Your Name]\nDepartment: [Your Department]\nUniversity: [Your University]")
+info_label.pack()
+
+# Input and Button
+entry = tk.Entry(app, width=40)
+entry.pack()
+count_button = tk.Button(app, text="Count Palindromes", command=update_palindrome_count)
+count_button.pack()
+
+# Result
+result_label = tk.Label(app, text="Palindrome Words Count: 0")
+result_label.pack()
+
+app.mainloop()
